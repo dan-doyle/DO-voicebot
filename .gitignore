@@ -10,3 +10,6 @@ voice_assistant_service/node_modules/
 
 # Pip modules
 barge_in_detection_service/int-env/
+
+# Barge-in Detection Service audio cache
+barge_in_detection_service/audio_cache/*
