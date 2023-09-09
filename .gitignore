@@ -1,0 +1,12 @@
+.DS_Store
+dummy/
+test_concat_base64/
+set_up_client_locally.txt
+set_up_va_locally.txt
+
+# Node modules
+voice_assistant_client/node_modules/
+voice_assistant_service/node_modules/
+
+# Pip modules
+barge_in_detection_service/int-env/

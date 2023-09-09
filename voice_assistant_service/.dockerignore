@@ -1,0 +1,16 @@
+node_modules/
+dist/
+build/
+
+package-lock.json
+
+.idea/
+*.iml
+
+.DS_Store
+
+*.log
+
+Dockerfile
+config/
+docs/

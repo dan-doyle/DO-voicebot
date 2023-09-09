@@ -1,0 +1,22 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.fa-microphone:before{
+  content:"\f130"
+}
+
+.fa {
+  font-size: 25px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.fa:hover {
+  color: rgb(201, 36, 36);
+}
