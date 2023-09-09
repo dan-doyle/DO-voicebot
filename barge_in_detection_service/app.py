@@ -57,11 +57,12 @@ def handle_query_interrupt(data: dict):
     else:
         audio_cache[id] += audio_segment
 
-    output_path = "audio_cache/"
-    if not os.path.exists(output_path):
-        os.makedirs(output_path)
-    file_name = f"{output_path}{id}.wav"
-    audio_cache[id].export(file_name, format="wav")
+    # Testing Only
+    # output_path = "audio_cache/"
+    # if not os.path.exists(output_path):
+    #     os.makedirs(output_path)
+    # file_name = f"{output_path}{id}.wav"
+    # audio_cache[id].export(file_name, format="wav")
 
     try:
         is_barge_in = check_barge_in(audio_cache[id], embedding_model, embedding_processor, classifier_model, average_embeddings=AVERAGE, threshold=THRESHOLD)
