@@ -47,13 +47,13 @@ app.use('/', express.static(path.join(__dirname, 'public')))
 // It may make more sense reverse the order of connections here if we want to let the client know whether interruptions are available or not
 export function setupClient (client) {
   console.log('Client connected\n')
-  // To do: Set up HTTP 2 connection here !
-  const interruptionClientConnection = http2.connect(global.config.services.interruptionDetectionService);
+  
+  const interruptionClientConnection = http2.connect(global.config.services.interruptionDetectionService); // NEW
 
   // client.on('audio-hotword', (request) => processAudioHotword(client, request))
-  client.on('audio-command', (request) => dummyProcessAudioCommand(client, request))
-  client.on('text-command', (request) => dummyProcessTextCommand(client, request))
-  client.on('audio-interrupt', (request) => processPossibleInterruption(client, interruptionClientConnection, request)) // NEW LINE  -> INTERRUPTION
+  client.on('audio-command', (request) => dummyProcessAudioCommand(client, request)) // NEW: replace with dummy function
+  client.on('text-command', (request) => dummyProcessTextCommand(client, request)) // NEW: replace with dummy function
+  client.on('audio-interrupt', (request) => processPossibleInterruption(client, interruptionClientConnection, request)) // NEW 
 }
 
 export default app

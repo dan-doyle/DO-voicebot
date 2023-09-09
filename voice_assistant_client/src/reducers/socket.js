@@ -28,11 +28,12 @@ export function setupSocket(backendUrl, dispatch) {
     window.socket.on("hotword", () => {
         dispatch(foundHotword({value: true}))
     });
-    // new: causes the pausing of playback
+    // --------START OF NEW CODE SECTION--------
     window.socket.on("interrupt-detected", (data) => {
         console.log("USER INTERRUPTION DETECTED")
         dispatch(userInterruptDetected({value: true, id: data.id}))
     });
+    // --------END OF NEW CODE SECTION--------
     window.socket.on("disconnect", () => console.log("Socket disconnected ..."));
 }
 
@@ -44,15 +45,6 @@ export function submitRecording(payload) {
             id: payload.id || uuidv4(),
             date: payload.date || new Date()
         });
-        // temporary start
-        // var new_payload = {command: 'Fake audio message'}
-        // window.socket.emit("text-command", {
-        //     type: "command",
-        //     ...new_payload,
-        //     id: payload.id || uuidv4(),
-        //     date: payload.date || new Date()
-        // });
-        // temporary end
         dispatch(changeStatus({status: PlayerStatus.PROCESSING}));
     };
 }
@@ -78,11 +70,8 @@ export function submitCommand(payload) {
     };
 }
 
-/* Create a function to emit the "audio-interrupt" event in the VA Service
-    - Should call userInterrupt from redux
-*/
-// should move this function out of redux, unless we want to introduce some 'queryInterruption' state
-export function queryInterruption(payload) { // introduce payload param
+// --------NEW FUNCTION: queryInterruption--------
+export function queryInterruption(payload) {
     console.log('QUERYING VA SERVICE TO CHECK FOR INTERRUPTION')
     window.socket.emit("audio-interrupt", {
         type: "command",

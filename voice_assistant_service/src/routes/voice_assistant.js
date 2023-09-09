@@ -12,7 +12,7 @@
   * @param {JSON} sttResponse The deepspeech json response
   */
 
-// Dummy function !
+ // --------FUNCTION: dummySuccessProcess--------
  export async function dummySuccessProcess (client, sttResponse, request, humanEmotion, humanThayers, botThayers, grammarCorrectionPositions, grammarCorrectionPrediction, overlappedSpeech) {
   // Simple function: send base64 encoded audio to the chatbot
   console.log('Speech to text transcription : SUCCESS\n')
@@ -66,7 +66,7 @@
     }
   }
 }
-
+// --------NEW FUNCTION: dummyProcessAudioCommand--------
 export async function dummyProcessAudioCommand (client, request) {
   function writeToFile(base64audio) {
     const fs = require('fs');
@@ -280,6 +280,7 @@ export async function dummyProcessAudioCommand (client, request) {
  }
  }
 
+ // --------NEW FUNCTION: dummyProcessTextCommand--------
  export async function dummyProcessTextCommand (client, request) {
   const commandData = { text: request.command }
 
@@ -334,7 +335,7 @@ export async function dummyProcessAudioCommand (client, request) {
  }
 
 
- // NEW - INTERRUPTION
+ // --------NEW FUNCTION: processPossibleInterruption--------
  export async function processPossibleInterruption (client, interruptionClientConnection, request) {
   try{
   let botThayers="n/a"

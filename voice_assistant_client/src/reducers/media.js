@@ -9,7 +9,7 @@ export const media = createSlice({
         audio: null,
         receivedHotwordRes: false,
         detectedHotword: false,
-        isInterrupt: {
+        isInterrupt: { // NEW 
             value: false,
             id: null,
         }
@@ -46,10 +46,12 @@ export const media = createSlice({
             state.status = PlayerStatus.IDLE;
             state.audio = null;
         },
+        // --------NEW REDUCER: clearAudioPostInterruption--------
         clearAudioPostInterruption: (state) => {
             state.audio = null;
         },
-        userInterruptDetected: (state, action) => { // new, changes state isInterrupt which pauses audio in SimpleRecorder
+        // --------NEW REDUCER: userInterruptDetected--------
+        userInterruptDetected: (state, action) => { // changes state isInterrupt which in turn pauses audio in SimpleRecorder
             if(state.status == PlayerStatus.RESPONDING) {
                 state.status = PlayerStatus.LISTENING;
             } else {
@@ -65,7 +67,7 @@ export const {changeStatus, addResponse, hotwordResponse, foundHotword, clearAud
 export const selectStatus = state => state.media.status;
 export const selectResponses = state => state.media.responseList;
 export const selectAudio = state => state.media.audio;
-export const selectInterrupt = state => state.media.isInterrupt;
+export const selectInterrupt = state => state.media.isInterrupt; // NEW
 
 export default media.reducer;
 

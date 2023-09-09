@@ -59,11 +59,11 @@ class SimpleRecorder extends React.Component {
             this.props.dispatch(hotwordResponse(false));
         }
         // --------START OF NEW CODE SECTION--------
-        // if we register either a new interruption or a new recording, check to see if we need to submit recording !
+        // if we register either a new interruption or a new recording, check to see if we need to submit recording 
         console.log('IN onComponentDidUpdate, checking isInterrupt: ', this.props.isInterrupt.value, ' AND ', this.state.recordings)
         if (this.props.isInterrupt.value && this.state.recordings) {
             console.log('SEARCHING FOR RECORDING WITH UUID: ', this.props.isInterrupt.id);
-            // send the recording corresponding to id in isInterrupt
+            // send the recording corresponding to the id found in isInterrupt
             const targetRecording = this.state.recordings.find(
                 recording => recording.id === this.props.isInterrupt.id
             );

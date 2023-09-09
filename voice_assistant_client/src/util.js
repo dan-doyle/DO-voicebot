@@ -26,6 +26,7 @@ function setupStream() {
     }
 }
 
+// --------NEW CLASS: InterruptionRecordRTC--------
 class InterruptionRecordRTC {
     constructor(stream, options, uuid) {
         this.recorder = RecordRTC(stream, options);
@@ -65,12 +66,14 @@ class InterruptionRecordRTC {
     }
 }
 
+// --------NEW FUNCTION: createInterruptionRecorder--------
 // factory method, so we can instantiate similarly the RecordRTC
 function createInterruptionRecorder(stream, options, uuid) {
     return new InterruptionRecordRTC(stream, options, uuid);
 }
 
-export function setupAudioRecorder(checkInterruption = false, queryInterruption = null) { // dependency invert: , ondataavailableCallback = null
+export function setupAudioRecorder(checkInterruption = false, queryInterruption = null) { 
+    // --------START OF NEW CODE SECTION--------
     let options = {
         recorderType: StereoAudioRecorder,
         type: "audio",
@@ -102,7 +105,9 @@ export function setupAudioRecorder(checkInterruption = false, queryInterruption 
         return setupStream().then(stream =>
             createInterruptionRecorder(stream, options, uuid)
         );
-    } else {
+    } 
+    // --------END OF NEW CODE SECTION--------
+    else {
         return setupStream().then(stream =>
             RecordRTC(stream, options)
         );
