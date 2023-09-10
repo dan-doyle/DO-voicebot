@@ -1,4 +1,4 @@
-# Run app with: hypercorn app:app --bind 0.0.0.0:8080
+# Run app with: hypercorn app:app --keep-alive 1000 --bind 0.0.0.0:8080
 
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse
