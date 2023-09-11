@@ -1,14 +1,20 @@
 # DO-voicebot
-Imperial College London Data Observatory Voice Assistant with Barge-in Detection service integrated.
+Imperial College London Data Observatory Voice Assistant with Barge-in Detection service integrated. As displayed in the diagram below, we mock non-core services. The mocking is performed through 'dummy' functions in the Voice Assistant service.
+
+![DO Image Description](./images/DO-image.png)
 
 ## Set-up
 
 1. Barge-in Detection service
 First navigate to the barge_in_detection_service folder to spin up the Docker container with commands:
 
+```
 docker build -t barge-in-service-img .
+```
 
+```
 docker run -d -p 8080:8080 barge-in-service-img
+```
 
 This binds the service to port 8080
 
@@ -21,7 +27,9 @@ hypercorn app:app --keep-alive 10000 --bind 0.0.0.0:8080
 
 To run locally, navigate to the voice_assistant_service directory and run:
 
+```
 npm run start
+```
 
 This will set up the service and it will be listening at port 2000.
 
@@ -29,7 +37,9 @@ This will set up the service and it will be listening at port 2000.
 
 Navigate to the voice_assistant_service directory and run:
 
+```
 npm run start
+```
 
 This sets the client up at port 6060, which you can access with your browser.
 
@@ -52,3 +62,5 @@ Or should we want to test we can run:
 ```
 python3 tests.py
 ```
+
+Ensure that both of the above commands are run from inside the barge_in_detection_service directory.
