@@ -75,7 +75,7 @@ def handle_query_interrupt(data: dict):
 
     try:
         is_barge_in = check_barge_in(audio_cache[id], embedding_model, embedding_processor, classifier_model, average_embeddings=AVERAGE, threshold=THRESHOLD)
-        is_barge_in = True
+        
         if is_barge_in:
             del audio_cache[id]
             print('SENDING RESPONSE DATA')
