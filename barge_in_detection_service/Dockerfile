@@ -24,4 +24,4 @@ RUN pip3 install --upgrade pip && \
 EXPOSE 8080
 
 # Define command to run the app using hypercorn
-CMD ["hypercorn", "app:app", "--bind", "0.0.0.0:8080"]
+CMD ["hypercorn", "app:app", "--keep-alive", "10000", "--bind", "0.0.0.0:8080"]
