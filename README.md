@@ -5,7 +5,8 @@ Imperial College London Data Observatory Voice Assistant with Barge-in Detection
 
 ## Set-up
 
-1. Barge-in Detection service
+### 1. Barge-in Detection service
+
 First navigate to the barge_in_detection_service folder to spin up the Docker container with commands:
 
 ```
@@ -23,7 +24,7 @@ Or alternatively we can run this locally by pip installing the contents of the r
 hypercorn app:app --keep-alive 10000 --bind 0.0.0.0:8080
 ```
 
-2. Voice Assistant service
+### 2. Voice Assistant service
 
 To run locally, navigate to the voice_assistant_service directory and run:
 
@@ -33,7 +34,7 @@ npm run start
 
 This will set up the service and it will be listening at port 2000.
 
-3. Client
+### 3. Client
 
 Navigate to the voice_assistant_service directory and run:
 
