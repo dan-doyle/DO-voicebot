@@ -1,5 +1,5 @@
 # DO-voicebot
-Imperial College London Data Observatory Voice Assistant with Barge-in Detection service integrated. As displayed in the diagram below, we mock non-core services. The mocking is performed through 'dummy' functions in the Voice Assistant service.
+Imperial College London Data Observatory Voice Assistant with Barge-in Detection service integrated. As displayed in the diagram below, we mock non-core services. The mocking is performed through 'dummy' functions in the Voice Assistant service.  The numbered steps in the diagram represent the control flow of handling a True barge-in from the moment overlapped user speech is detected
 
 ![DO Image Description](./images/DO-image.png)
 
