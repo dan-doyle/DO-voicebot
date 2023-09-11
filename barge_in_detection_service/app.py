@@ -15,7 +15,16 @@ audio_cache = {}
 # load in preprocessors and models as global variables, always in memory
 AVERAGE = False # whether to use the AverageModel or the PatternModel
 THRESHOLD = 0.5 # threshold for which we must exceed to deem a Barge-in
-embedding_model, embedding_processor, classifier_model = load_barge_in_models(average_model=AVERAGE)
+LOCAL = False # whether we are running the model in Docker or locally
+LOCAL_AVERAGE_MODEL_WEIGHTS_PATH = '/Users/daniel/Desktop/DO voicebot/barge_in_detection_service/barge_in_model/resources/average_model.pth' # edit path here if running locally
+LOCAL_PATTERN_MODEL_WEIGHTS_PATH = '/Users/daniel/Desktop/DO voicebot/barge_in_detection_service/barge_in_model/resources/pattern_model.pth' # edit path here if running locally
+
+if AVERAGE:
+    LOCAL_MODEL_WEIGHTS_PATH = LOCAL_AVERAGE_MODEL_WEIGHTS_PATH
+else:
+    LOCAL_MODEL_WEIGHTS_PATH = LOCAL_PATTERN_MODEL_WEIGHTS_PATH
+
+embedding_model, embedding_processor, classifier_model = load_barge_in_models(average_model=AVERAGE, local=LOCAL, model_weights_path = LOCAL_MODEL_WEIGHTS_PATH)
 
 @app.post("/query-interrupt")
 def handle_query_interrupt(data: dict):
